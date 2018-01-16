@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Let's Talk</h1>
+  <p class="deck">
+    Chat with your contacts
+  </p>
+  <p>
+    <a class="button button-primary" href="{% url 'new_room' %}">Start new Message</a>
+  </p>
+  <p class="quiet">
+    Send this link <code>{{ request.scheme }}://{{ request.get_host }}/randomly-generated-path</code> to your contacts to chat with them once they approve
+  </p>
+{% endblock content %}

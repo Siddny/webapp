@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% load staticfiles %}
+  <h1>Let's Talk</h1>
+  <!-- <h1>{{ room.label }}</h1> -->
+  <p class="quiet">
+    Send this link to your contacts to be able to chat with them  
+    <code>{{ request.scheme }}://{{ request.get_host }}/{{ room.label }}</code> once they approve
+  </p>
+  <p>
+    <label for="handle">Contact:</label>
+    <input id="handle" type="text" placeholder="contact name">
+  </p>
+  <form id="chatform">
+    <table id="chat">
+      <tbody>
+        {% for message in messages %}
+          <tr>
+            <td>{{ message.formatted_timestamp }}</td>
+            <td>{{ message.handle }}</td>
+            <td>{{ message.message }}</td>
+          </tr> 
+        {% endfor %}
+      </tbody>
+      <tfoot>
+      <tr>
+        <td>Message:</td>
+        <td colspan=2>
+          <input id="message" type="text" placeholder="message">
+          <button type="submit" id="go">Send</button>
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+  </form>
+{% endblock content %}
+
+{% block afterbody %}
+  <script type="text/javascript" src='{% static "jquery-1.12.1.min.js" %}'></script>
+  <script type="text/javascript" src='{% static "reconnecting-websocket.min.js" %}'></script>
+  <script type="text/javascript" src='{% static "chat.js" %}'></script>
+{% endblock afterbody %}
