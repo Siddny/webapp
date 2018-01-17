@@ -1,11 +1,9 @@
 from django.conf.urls import include, url
-from .views import home, register, about, new_room, chat_room
+from . import views
 
 urlpatterns = [
-
-	url(r'^$', home),
-    url(r'^register/', register),
-    url(r'^$',  views.about, name='about'),
+    url(r'^$',  views.about, name='home'),#about
     url(r'^new/$', views.new_room, name='new_room'),
     url(r'^(?P<label>[\w-]{,50})/$', views.chat_room, name='chat_room'),
+    
 ]
