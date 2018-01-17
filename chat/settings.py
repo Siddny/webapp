@@ -45,6 +45,7 @@ INSTALLED_APPS = (
 
     'channels',
     'chatapp',
+    'accounts',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -60,6 +61,7 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'chat.urls'
+LOGIN_REDIRECT_URL = '/'
 
 TEMPLATES = [
     {
